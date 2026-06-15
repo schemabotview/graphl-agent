@@ -169,6 +169,11 @@ body.resizing-h * { user-select: none !important; }
 .tree .dir.open > .row .codicon-folder { display: none; }
 .tree .dir.open > .row .codicon-folder-opened { display: inline-block; }
 
+/* chevron indicator for folders with children; rotates when open */
+.tree .dir > .row .caret { transition: transform 0.1s; }
+.tree .dir.open > .row .caret { transform: rotate(90deg); }
+.tree .dir > .row .caret.empty { visibility: hidden; }
+
 /* subtle accent for folder icons */
 .tree .dir > .row .codicon { color: #dcb67a; }
 .tree .dir > .row.active .codicon { color: #fff; }

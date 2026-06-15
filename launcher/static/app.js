@@ -88,8 +88,9 @@ function renderNode(node, isRoot = false) {
 
   const row = document.createElement("div");
   row.className = "row";
+  const hasKids = (node.children || []).length > 0;
   row.innerHTML = node.type === "dir"
-    ? `<i class="codicon codicon-folder"></i><i class="codicon codicon-folder-opened"></i><span class="name"></span>`
+    ? `<i class="codicon codicon-chevron-right caret${hasKids ? "" : " empty"}"></i><i class="codicon codicon-folder"></i><i class="codicon codicon-folder-opened"></i><span class="name"></span>`
     : `<i class="codicon ${fileIconClass(node.name)}"></i><span class="name"></span>`;
   row.querySelector(".name").textContent = node.name;
   li.appendChild(row);

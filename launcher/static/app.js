@@ -62,6 +62,7 @@ require(["vs/editor/editor.main"], () => {
     automaticLayout: true,
     minimap: { enabled: false },
     fontSize: 15,
+    wordWrap: "on",
     fontFamily: "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
     fontLigatures: true,
     scrollBeyondLastLine: false,

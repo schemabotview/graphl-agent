@@ -2,6 +2,19 @@
 
 A local browser-based IDE that wraps [aider](https://aider.chat) against a local LLM served by Ollama. Single-machine, no cloud, no auth. Open `http://localhost:8000` and you get a file tree, Monaco editor, and a tabbed terminal panel — and aider runs in any terminal tab on demand.
 
+## Prerequisites
+
+The launcher itself runs on Python 3.13 + FastAPI, but the IDE is useless without the aider toolchain wired up below. Verify all four before `./start.py`:
+
+1. **Ollama running** — `brew services start ollama` (or `ollama serve`). Health check: `curl -s http://localhost:11434/api/tags`.
+2. **Model pulled** — `ollama pull qwen2.5-coder:7b`. Anything smaller produces unusable diffs; larger (`:14b`, `:32b`) works better if you have the RAM.
+3. **Aider on PATH** — `brew install aider` (lands at `/opt/homebrew/bin/aider`). `start.py` aborts if `aider` or `ollama` are missing.
+4. **`aiderx` alias in `~/.zshrc`** — what every PTY shell tab uses to launch aider with the right flags:
+   ```bash
+   alias aiderx='OLLAMA_API_BASE=http://localhost:11434 aider --model ollama_chat/qwen2.5-coder:7b --no-auto-commits --pretty'
+   ```
+   Without this alias, typing `aider` in a tab still works but talks to whatever default backend aider picks (usually nothing useful offline).
+
 ## How it runs
 
 ```

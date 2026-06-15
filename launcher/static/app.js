@@ -61,7 +61,7 @@ require(["vs/editor/editor.main"], () => {
     theme: "graphl-darcula",
     automaticLayout: true,
     minimap: { enabled: false },
-    fontSize: 13,
+    fontSize: 15,
     fontFamily: "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
     fontLigatures: true,
     scrollBeyondLastLine: false,

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>graphl-agent</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" />
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@vscode/codicons@0.0.36/dist/codicon.css" />
+  <link rel="stylesheet" data-name="vs/editor/editor.main"
+        href="https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs/editor/editor.main.css" />
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/css/xterm.min.css" />
+</head>
+<body>
+  <main>
+    <div class="resizer v" id="resizer-v" title="drag to resize · double-click to reset"></div>
+    <div class="resizer h" id="resizer-h" title="drag to resize · double-click to reset"></div>
+
+    <aside class="tree-pane">
+      <div class="pane-header tree-header">
+        <div class="tree-header-text">
+          <span class="brand">GraphL</span>
+          <span class="workspace-path" id="status" title="">…</span>
+        </div>
+        <div class="tree-header-actions">
+          <button id="pick-workspace" title="open another folder as workspace">
+            <i class="codicon codicon-folder-opened"></i>
+          </button>
+          <button id="refresh-tree" title="refresh">
+            <i class="codicon codicon-refresh"></i>
+          </button>
+        </div>
+      </div>
+      <ul id="tree" class="tree"></ul>
+    </aside>
+
+    <section class="editor-pane">
+      <div class="pane-header">
+        <span id="editor-path">no file open</span>
+        <span id="dirty-flag"></span>
+      </div>
+      <div id="editor"></div>
+    </section>
+
+    <section class="bottom-pane">
+      <div class="tabbar">
+        <div id="tabs" class="tabs"></div>
+        <div class="tab-actions">
+          <button id="new-tab" title="new terminal">+ shell</button>
+        </div>
+      </div>
+      <div id="term-host" class="term-host"></div>
+    </section>
+  </main>
+
+  <!-- xterm first: its UMD probes for AMD `define`, and Monaco's loader defines one. -->
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/lib/xterm.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0/lib/addon-fit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-web-links@0.11.0/lib/addon-web-links.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs/loader.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
